@@ -1,6 +1,6 @@
 # marvelmind robotics indoor gps
 
-This is a ROS package for the [Indoor GPS](docs/more_words.md) kit from Marvel Mind robotics, providing indoor localization for robots.
+This is a ROS package for the [Indoor GPS](docs/more_words.md) kit from Marvel Mind robotics, providing indoor localization for robots. This is adapted from software written by Boris Zinin (b.zinin@gmail.com)
 
 ![alt tag](http://www.marvelmind.com/pics/marvelmind_indoor_GPS.png)
 
