@@ -42,7 +42,7 @@ def indoor_gps_data_acq():
     ser 	    = indoor_gps_init(port, baud)
 
     pktSize = 23
-	meta_data_size = 5;
+    meta_data_size = 5;
     
     while not rospy.is_shutdown():
         ser = serial.Serial(port, baud, timeout=3 )
