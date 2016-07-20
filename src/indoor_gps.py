@@ -42,6 +42,7 @@ def indoor_gps_data_acq():
     ser 	    = indoor_gps_init(port, baud)
 
     pktSize = 23
+	meta_data_size = 5;
     
     while not rospy.is_shutdown():
         ser = serial.Serial(port, baud, timeout=3 )
@@ -59,8 +60,9 @@ def indoor_gps_data_acq():
                 buf = ser.read(len_buf)
                 pktHdrOffset = buf.find('\xff\x47\x01\x00')
 
-            usnTimestamp, usnX, usnY, usnCRC16 = struct.unpack_from ( '<LhhxxxxxxxxH', buf, pktHdrOffset+5 )
-            pub.publish( Vector3( usnX, usnY, 0) )
+            if len_buf - pktHdrOffset - meta_data_size >= 18:
+                usnTimestamp, usnX, usnY, usnCRC16 = struct.unpack_from ( '<LhhxxxxxxxxH', buf, pktHdrOffset + meta_data_size )
+                pub.publish( Vector3( usnX, usnY, 0) )
      
             len_tail = len( buf ) - (pktHdrOffset + pktSize)
             len_buf = pktSize - len_tail
