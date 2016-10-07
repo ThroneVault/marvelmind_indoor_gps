@@ -15,7 +15,7 @@ import struct
 import time
 from numpy import pi
 from geometry_msgs.msg import Vector3
-import crcmod
+#import crcmod
 import traceback
 
 def indoor_gps_init(serial_device, baudrate):
